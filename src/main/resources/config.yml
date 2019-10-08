@@ -1,0 +1,63 @@
+# Maximum HP single player can have at the same time
+maxHP: 3
+
+# Displayed after death
+warningMessage: "§9Masz jeszcze §b%HP% z %MAX_HP% §9zyc. Uwazaj na siebie!"
+# /hp command output
+hpMessage: "§9Masz jeszcze §b%HP% z %MAX_HP% §9zyc. Uwazaj na siebie!"
+maxHPMessage: "§cMasz juz maksymalna liczbe HP!"
+newHP: "§aMasz teraz §e%HP% z %MAX_HP% §azyc!"
+
+# On player first join player gets the INVISIBILITY effect.
+# This value controls the duration of the effect.
+# default: 60 [minutes]
+invisibilityDuration: 60
+# Player gets this effect after death
+# Set this value to 0 to disable feature
+# default: 10 [minutes]
+invisibilityDurationAfterDeath: 10
+
+autoRegen:
+  # Time required to regenerate single HP (only integer values)
+  # default: 24 [hours]
+  perHP: 24
+  # Only n
+  threshold: 1
+
+hpSteal:
+  # Beginning hour (including the last one)
+  # integer, 0 - 23
+  # default: 0
+  begin: 0
+  # Ending hour (including the last one)
+  # integer, 0 - 23
+  # default: 8
+  end: 8
+
+healingItem:
+  name: "Healing GApple"
+  lore:
+    - "Line 1"
+    - "Line 2"
+
+ban:
+  duration: 24
+  # Message that blocked (by this plugin) players will see
+  # default: "§6Bana masz kolezko :)\nWejsc na serwer bedziesz mogl %DATE%"
+  message: "§6Bana masz kolezko :)\nWejsc na serwer bedziesz mogl §e%DATE%"
+
+# Delay between saves to the database
+# default: 1800 [seconds]
+saveDelay: 1800
+
+# type:
+#  '0' - disabled
+#  '1' - external
+#  '2' - local (single database file in plugin's directory)
+database:
+  type: 2
+  address: localhost
+  port: 3306
+  login: admin
+  password: password
+  name: LifeIsHard

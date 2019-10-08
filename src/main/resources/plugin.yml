@@ -1,0 +1,14 @@
+name: LifeIsHard
+main: pl.wieczorekp.lifeishard.LifeIsHard
+api-version: "1.14"
+
+version: "1.0"
+author: FarmerSA
+description: HARDCORE Minecraft Experience
+prefix: LifeIsHard
+
+depend: [WConfigModule]
+
+commands:
+  hp:
+    description: Shows your current HP.
