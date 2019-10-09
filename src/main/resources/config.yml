@@ -15,24 +15,25 @@ invisibilityDuration: 60
 # Player gets this effect after death
 # Set this value to 0 to disable feature
 # default: 10 [minutes]
-invisibilityDurationAfterDeath: 10
+invisibilityDurationAfterDeath: 15
 
 autoRegen:
   # Time required to regenerate single HP (only integer values)
   # default: 24 [hours]
-  perHP: 24
+  perHP: 48
   # Only n
   threshold: 1
 
+# Current config allows life steal every day from 0:00 to 9:00
 hpSteal:
   # Beginning hour (including the last one)
   # integer, 0 - 23
   # default: 0
   begin: 0
-  # Ending hour (including the last one)
+  # Ending hour (excluding the last one)
   # integer, 0 - 23
-  # default: 8
-  end: 8
+  # default: 9
+  end: 9
 
 healingItem:
   name: "Healing GApple"

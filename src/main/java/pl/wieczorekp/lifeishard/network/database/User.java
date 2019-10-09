@@ -2,10 +2,8 @@ package pl.wieczorekp.lifeishard.network.database;
 
 import org.bukkit.BanList;
 import org.bukkit.Bukkit;
-import pl.wieczorekp.lifeishard.BanManager;
 import pl.wieczorekp.lifeishard.LifeIsHard;
 
-import java.util.Calendar;
 import java.util.UUID;
 
 public class User implements Comparable<User> {
@@ -55,8 +53,12 @@ public class User implements Comparable<User> {
         this.currentHP--;
     }
 
-    public void increaseHP() {
+    public boolean increaseHP() {
+        if (this.currentHP >= ((int) LifeIsHard.getInst().getValue("maxHP")))
+            return false;
+
         this.currentHP++;
+        return true;
     }
 
     public int getLongestLife() {

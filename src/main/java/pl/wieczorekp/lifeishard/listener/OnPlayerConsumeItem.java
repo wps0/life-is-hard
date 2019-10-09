@@ -17,12 +17,13 @@ public class OnPlayerConsumeItem implements Listener {
                 && !e.getItem().getItemMeta().getEnchants().isEmpty()
                 && e.getItem().getType() == Material.ENCHANTED_GOLDEN_APPLE
                 && e.getItem().getEnchantments().get(Enchantment.THORNS) != null) {
+
             User u = LifeIsHard.getDatabaseManager().getUserBy(e.getPlayer().getUniqueId());
-            if (u.getHP() >= (int) LifeIsHard.getInst().getConfigInstance().getValue("maxHP")) {
+
+            if (!u.increaseHP()) {
                 e.setCancelled(true);
                 e.getPlayer().sendMessage((String) LifeIsHard.getInst().getValue("maxHPMessage"));
             } else {
-                u.increaseHP();
                 e.getPlayer().sendMessage(
                         ((String) LifeIsHard.getInst().getValue("newHP"))
                         .replaceAll("%HP%", String.valueOf(u.getHP()))
