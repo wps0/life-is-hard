@@ -53,11 +53,18 @@ public class User implements Comparable<User> {
         this.currentHP--;
     }
 
-    public boolean increaseHP() {
+    public boolean increaseHP(boolean isNatural) {
         if (this.currentHP >= ((int) LifeIsHard.getInst().getValue("maxHP")))
             return false;
 
         this.currentHP++;
+        if (isNatural) {
+            this.totalNaturalHP++;
+            this.setLastNaturalRegenerationDate(Utils.getCurrentTime());
+        } else {
+            this.totalArtificialHP++;
+            this.setLastArtificialRegenerationDate(Utils.getCurrentTime());
+        }
         return true;
     }
 

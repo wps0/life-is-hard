@@ -1,6 +1,5 @@
 package pl.wieczorekp.lifeishard.network.database;
 
-import org.bukkit.Bukkit;
 import pl.wieczorekp.configmodule.IConfigurableJavaPlugin;
 import pl.wieczorekp.lifeishard.ExceptionManager;
 import pl.wieczorekp.lifeishard.LifeIsHard;
@@ -110,8 +109,8 @@ public class DatabaseManager extends DatabaseConnection {
                 updateQ.append("total_natural_hp=").append(u.getTotalNaturalHP()).append(",");
                 updateQ.append("last_natural_hp_date=").append(u.getLastNaturalRegenerationDate()).append(",");
 
-                updateQ.append("total_artificial_hp=").append(u.getLastNaturalRegenerationDate()).append(",");
-                updateQ.append("last_artificial_hp_date=").append(u.getLastNaturalRegenerationDate()).append(",");
+                updateQ.append("total_artificial_hp=").append(u.getTotalArtificialHP()).append(",");
+                updateQ.append("last_artificial_hp_date=").append(u.getLastArtificialRegenerationDate()).append(",");
 
                 updateQ.append("deaths=").append(u.getDeaths()).append(",");
                 updateQ.append("last_death=").append(u.getLastDeathDate());

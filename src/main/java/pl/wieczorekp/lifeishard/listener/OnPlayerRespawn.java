@@ -14,9 +14,11 @@ public class OnPlayerRespawn implements Listener {
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent e) {
         User u = LifeIsHard.getDatabaseManager().getUserBy(e.getPlayer().getUniqueId());
-        if (u.getHP() <= 0)
+        if (u.getHP() <= 0) {
             BanManager.ban(e.getPlayer());
-        else if (u.getHP() < ((int) LifeIsHard.getInst().getValue("maxHP"))) {
+            u.setHP(0);
+            u.increaseHP(true);
+        } else if (u.getHP() < ((int) LifeIsHard.getInst().getValue("maxHP"))) {
             new BukkitRunnable() {
                 @Override
                 public void run() {

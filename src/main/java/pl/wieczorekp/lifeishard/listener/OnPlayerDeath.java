@@ -7,6 +7,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import pl.wieczorekp.lifeishard.LifeIsHard;
 import pl.wieczorekp.lifeishard.network.database.User;
+import pl.wieczorekp.lifeishard.network.database.Utils;
 
 import java.util.Calendar;
 
@@ -26,7 +27,7 @@ public class OnPlayerDeath implements Listener {
                         .replaceAll("%MAX_HP%", String.valueOf((int) LifeIsHard.getInst().getValue("maxHP")))
         );
 
-        int currentTime = (int) (Calendar.getInstance().getTimeInMillis() / 1000);
+        int currentTime = Utils.getCurrentTime();
 
         if (u.getLastDeathDate() > 0 && currentTime - u.getLastDeathDate() > u.getLongestLife())
             u.setLongestLife(currentTime - u.getLastDeathDate());
@@ -36,11 +37,11 @@ public class OnPlayerDeath implements Listener {
         u.setLastDeathDate(currentTime);
 
         if (victim.getKiller() != null) {
-            if (Calendar.getInstance().getTime().getHours() >= LifeIsHard.getInst().getConfigInstance().getValue("hpSteal.begin") &&
-                    Calendar.getInstance().getTime().getHours() < LifeIsHard.getInst().getConfigInstance().getValue("hpSteal.end")) {
+            if (Calendar.getInstance().getTime().getHours() >= (int) LifeIsHard.getInst().getConfigInstance().getValue("hpSteal.begin") &&
+                    Calendar.getInstance().getTime().getHours() < (int) LifeIsHard.getInst().getConfigInstance().getValue("hpSteal.end")) {
 
                 User killer = LifeIsHard.getDatabaseManager().getUserBy(victim.getKiller().getUniqueId());
-                if (killer.increaseHP()) {
+                if (killer.increaseHP(false)) {
                     victim.getKiller().sendMessage(
                             ((String) LifeIsHard.getInst().getValue("newHP"))
                                     .replaceAll("%HP%", String.valueOf(killer.getHP()))

@@ -20,7 +20,7 @@ public class OnPlayerConsumeItem implements Listener {
 
             User u = LifeIsHard.getDatabaseManager().getUserBy(e.getPlayer().getUniqueId());
 
-            if (!u.increaseHP()) {
+            if (!u.increaseHP(false)) {
                 e.setCancelled(true);
                 e.getPlayer().sendMessage((String) LifeIsHard.getInst().getValue("maxHPMessage"));
             } else {

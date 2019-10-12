@@ -2,7 +2,7 @@ name: LifeIsHard
 main: pl.wieczorekp.lifeishard.LifeIsHard
 api-version: "1.14"
 
-version: "1.0"
+version: "1.1.1"
 author: FarmerSA
 description: HARDCORE Minecraft Experience
 prefix: LifeIsHard

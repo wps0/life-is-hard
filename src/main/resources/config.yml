@@ -39,7 +39,6 @@ healingItem:
   name: "Healing GApple"
   lore:
     - "Line 1"
-    - "Line 2"
 
 ban:
   duration: 24

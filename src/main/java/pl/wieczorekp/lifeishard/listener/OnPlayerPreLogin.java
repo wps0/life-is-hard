@@ -22,7 +22,8 @@ public class OnPlayerPreLogin implements Listener {
                     .replaceAll("%DATE%", Bukkit.getBanList(BanList.Type.NAME).getBanEntry(e.getName()).getExpiration().toString()));
         } else if (u.getHP() <= 0) {
             BanManager.unban(e.getName());
-            u.setHP(1);
+            u.setHP(0);
+            u.increaseHP(true);
         }
     }
 }
